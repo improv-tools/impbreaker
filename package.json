@@ -1,7 +1,7 @@
 {
   "name": "impbreaker-app",
   "version": "1.0.0",
-  "homepage": "https://dazzle-blip.github.io/impbreaker",
+  "homepage": "https://improv-tools.github.io/impbreaker",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
