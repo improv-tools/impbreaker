@@ -179,7 +179,7 @@ const prompts = [
 const categories = ["question", "physical", "game", "boundaries"];
 const levels = [1, 2, 3, 4];
 
-export default function IceBreakerApp() {
+export default function App() {
   const [activeCombos, setActiveCombos] = useState(
     new Set(categories.flatMap((cat) => levels.map((lvl) => `${cat}:${lvl}`)))
   );
