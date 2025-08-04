@@ -206,7 +206,6 @@ export default function App() {
           alignItems: "center",
           padding: "0.5rem",
           textAlign: "center",
-          position: "relative",
         }}
       >
         {currentPrompt ? (
@@ -222,10 +221,20 @@ export default function App() {
             >
               {currentPrompt.text}
             </h1>
+            <div
+              style={{
+                fontSize: "0.75rem",
+                color: "#999",
+                fontStyle: "italic",
+              }}
+            >
+              {currentPrompt.category} — level {currentPrompt.level}
+            </div>
             <p
               style={{
                 fontSize: "0.75rem",
                 color: "#888888",
+                marginTop: "0.75rem",
               }}
             >
               (Click anywhere or press Enter/Space to see another prompt)
