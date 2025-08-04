@@ -174,9 +174,9 @@ export const prompts = [
   { text: "Have you ever not spoken up when you wanted to set a boundary with me?", level: 3, category: "boundaries" },
   { text: "Has something between us ever made you question what boundaries you want with me?", level: 3, category: "boundaries" },
   { text: "Is there a line you’re worried you or I might cross?", level: 3, category: "boundaries" },
-  { text: "Have you ever hesitated to say no to me out of fear of changing how I see you?", level: 4, category: "boundaries",
-  { text: "Are there roles you’d avoid playing with me because they hit too close?", level: 3, category: "boundaries",},
-},
+  { text: "Are there roles you’d avoid playing with me because they hit too close?", level: 3, category: "boundaries"},
+
+  { text: "Have you ever hesitated to say no to me out of fear of changing how I see you?", level: 4, category: "boundaries"},
 ];
 
 // Extract unique categories and levels
