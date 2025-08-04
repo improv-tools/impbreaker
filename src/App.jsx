@@ -42,10 +42,10 @@ export default function App() {
   };
 
   const categoryColors = {
-    question: "text-blue-600",
-    physical: "text-pink-600",
-    game: "text-green-600",
-    boundaries: "text-purple-600",
+    question: "#60a5fa",   // blue
+    physical: "#f472b6",   // pink
+    game: "#6ee7b7",       // green
+    boundaries: "#c084fc", // purple
   };
 
   return (
@@ -61,14 +61,14 @@ export default function App() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#111827", // dark theme
+        backgroundColor: "#000",
         color: "white",
+        fontFamily: `"Inter", sans-serif`,
       }}
     >
       <div
         style={{
-          backgroundColor: "#1f2937",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
+          backgroundColor: "#0a0a0a",
           padding: "1rem",
           position: "sticky",
           top: 0,
@@ -110,9 +110,9 @@ export default function App() {
                     style={{
                       padding: "0.25rem 0.5rem",
                       borderRadius: "0.25rem",
-                      border: active ? "2px solid #3b82f6" : "1px solid #374151",
-                      backgroundColor: active ? "#3b82f6" : "#1f2937",
-                      color: active ? "white" : "#d1d5db",
+                      border: active ? "2px solid #3b82f6" : "1px solid #444",
+                      backgroundColor: active ? "#3b82f6" : "#111",
+                      color: active ? "white" : "#ccc",
                       cursor: "pointer",
                       fontSize: "0.875rem",
                       userSelect: "none",
@@ -138,14 +138,22 @@ export default function App() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "1.5rem",
+          padding: "2rem",
           textAlign: "center",
           userSelect: "none",
         }}
       >
         {currentPrompt ? (
           <>
-            <h1 style={{ fontSize: "2rem", fontWeight: "600", color: "white", maxWidth: "40rem" }}>
+            <h1
+              style={{
+                fontSize: "2rem",
+                fontWeight: "600",
+                color: "white",
+                maxWidth: "40rem",
+                lineHeight: "1.4",
+              }}
+            >
               {currentPrompt.text}
             </h1>
             <p
@@ -154,17 +162,25 @@ export default function App() {
                 textTransform: "uppercase",
                 fontWeight: "700",
                 letterSpacing: "0.05em",
-                color: categoryColors[currentPrompt.category] || "#d1d5db",
+                color: categoryColors[currentPrompt.category] || "#999",
+                fontSize: "0.75rem",
               }}
             >
               {currentPrompt.category} · Level {currentPrompt.level}
             </p>
-            <p style={{ marginTop: "0.5rem", fontSize: "0.75rem", color: "#9ca3af", userSelect: "text" }}>
-              (Click anywhere or press Space/Enter to see another prompt)
+            <p
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.75rem",
+                color: "#777",
+                userSelect: "text",
+              }}
+            >
+              (Click or press Space/Enter to continue)
             </p>
           </>
         ) : (
-          <p style={{ color: "#6b7280", marginTop: "1.5rem", userSelect: "text" }}>
+          <p style={{ color: "#888", marginTop: "1.5rem", userSelect: "text" }}>
             No prompts available for the selected filters.
           </p>
         )}
