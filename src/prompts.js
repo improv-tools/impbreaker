@@ -1,7 +1,4 @@
 export const prompts = [
-  // PAUSE / CHECK-IN
-  { text: "Take a moment to check in with yourself. How are you feeling?", category: "pause", level: 0 },
-  { text: "Would you like to continue, pause, or stop?", category: "pause", level: 0 },
 
   // QUESTIONS: LEVEL 1 (Casual, light)
   { text: "What’s your favorite comfort food and why?", level: 1, category: "question" },
