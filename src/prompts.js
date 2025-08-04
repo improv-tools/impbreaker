@@ -35,8 +35,9 @@ export const prompts = [
   { text: "When do you feel most emotionally connected to others?", level: 3, category: "question" },
   { text: "What emotion do you struggle to express?", level: 3, category: "question" },
   { text: "Have you ever felt rejected or misunderstood by me, even if you didn’t tell me?", level: 3, category: "question" },
-  { text: "What’s a fear you have about being emotionally close with me?", level: 3, category: "question" },
-  { text: "What’s a moment with me that caught you off guard emotionally or physically?", level: 3, category: "question"},
+  { text: "What’s something about your feelings for me that scares you most?", level: 3, category: "question" },
+  { text: "What is your greatest insecurity when you’re with me?", level: 3, category: "question" },
+  { text: "Is there a part of yourself you hide around me, and why?", level: 3, category: "question" },
 
   // QUESTIONS: LEVEL 4 (Extreme, raw, or highly uncomfortable — strictly for the two people)
   { text: "What is the one thing about yourself you hope I never find out—and why?", level: 4, category: "question" },
@@ -46,12 +47,14 @@ export const prompts = [
   { text: "Share a time when you felt truly ashamed in our relationship, or about us.", level: 4, category: "question" },
   { text: "What is your biggest fear about our connection that you rarely speak of?", level: 4, category: "question" },
   { text: "Have you ever thought about ending things between us, even for a moment? Explain.", level: 4, category: "question" },
-  { text: "What is your greatest insecurity when you’re with me?", level: 4, category: "question" },
+
   { text: "Is there something you’ve lied to me about, no matter how small?", level: 4, category: "question" },
-  { text: "What’s something about your feelings for me that scares you most?", level: 4, category: "question" },
-  { text: "Is there a part of yourself you hide around me, and why?", level: 4, category: "question" },
+
+
   { text: "If you had no fear of judgment or consequence, what would you want to say to me right now?", level: 4, category: "question" },
   { text: "What is the deepest wound you carry that you fear might never heal?", level: 4, category: "question" },
+  { text: "What’s a fear you have about being emotionally close with me?", level: 4, category: "question" },
+  { text: "What’s a moment with me that caught you off guard emotionally or physically?", level: 4, category: "question"},
 
   // PHYSICAL: LEVEL 1 (casual, easy, low contact)
   { text: "High five your partner.", level: 1, category: "physical" },
