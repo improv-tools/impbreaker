@@ -222,14 +222,17 @@ export default function App() {
               {currentPrompt.text}
             </h1>
             <div
-              style={{
-                fontSize: "0.75rem",
-                color: "#999",
-                fontStyle: "italic",
-              }}
-            >
-              {currentPrompt.category} — level {currentPrompt.level}
-            </div>
+  style={{
+    fontSize: "1rem",
+    fontWeight: "600",
+    color: "#cccccc",
+    marginBottom: "0.25rem",
+    letterSpacing: "0.03em",
+    textTransform: "uppercase",
+  }}
+>
+  {currentPrompt.category} • Level {currentPrompt.level}
+</div>
             <p
               style={{
                 fontSize: "0.75rem",
