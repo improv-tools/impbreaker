@@ -36,6 +36,7 @@ export const prompts = [
   { text: "What emotion do you struggle to express?", level: 3, category: "question" },
   { text: "Have you ever felt rejected or misunderstood by me, even if you didn’t tell me?", level: 3, category: "question" },
   { text: "What’s a fear you have about being emotionally close with me?", level: 3, category: "question" },
+  { text: "What’s a moment with me that caught you off guard emotionally or physically?", level: 3, category: "question"},
 
   // QUESTIONS: LEVEL 4 (Extreme, raw, or highly uncomfortable — strictly for the two people)
   { text: "What is the one thing about yourself you hope I never find out—and why?", level: 4, category: "question" },
@@ -87,6 +88,7 @@ export const prompts = [
   { text: "Place a hand on your partner’s heart and hold until the end of your next prompt.", level: 3, category: "physical" },
   { text: "Lay your head on your partner’s shoulder and close your eyes for 30 seconds.", level: 3, category: "physical" },
   { text: "Touch each other’s faces with both hands and close your eyes for 30 seconds.", level: 3, category: "physical" },
+  
 
   // PHYSICAL: LEVEL 4 (extreme, very intimate or boundary-pushing)
   { text: "Sit in your partner’s lap, facing them, and hold eye contact until the end of your next prompt.", level: 4, category: "physical" },
@@ -169,6 +171,9 @@ export const prompts = [
   { text: "Have you ever not spoken up when you wanted to set a boundary with me?", level: 3, category: "boundaries" },
   { text: "Has something between us ever made you question what boundaries you want with me?", level: 3, category: "boundaries" },
   { text: "Is there a line you’re worried you or I might cross?", level: 3, category: "boundaries" },
+  { text: "Have you ever hesitated to say no to me out of fear of changing how I see you?", level: 4, category: "boundaries",
+  { text: "Are there roles you’d avoid playing with me because they hit too close?", level: 3, category: "boundaries",},
+},
 ];
 
 // Extract unique categories and levels
