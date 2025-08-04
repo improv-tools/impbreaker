@@ -42,7 +42,7 @@ export default function App() {
 
   const toggleEntireLevel = (lvl) => {
     const newSet = new Set(activeCombos);
-    let allOn = categories.every((cat) => newSet.has(`${cat}:${lvl}`));
+    const allOn = categories.every((cat) => newSet.has(`${cat}:${lvl}`));
     categories.forEach((cat) => {
       const key = `${cat}:${lvl}`;
       if (allOn) newSet.delete(key);
@@ -55,7 +55,7 @@ export default function App() {
 
   const toggleEntireCategory = (cat) => {
     const newSet = new Set(activeCombos);
-    let allOn = levels.every((lvl) => newSet.has(`${cat}:${lvl}`));
+    const allOn = levels.every((lvl) => newSet.has(`${cat}:${lvl}`));
     levels.forEach((lvl) => {
       const key = `${cat}:${lvl}`;
       if (allOn) newSet.delete(key);
@@ -64,13 +64,6 @@ export default function App() {
     setActiveCombos(newSet);
     const filtered = prompts.filter((p) => newSet.has(`${p.category}:${p.level}`));
     setCurrentPrompt(filtered.length > 0 ? filtered[Math.floor(Math.random() * filtered.length)] : null);
-  };
-
-  const categoryColors = {
-    question: "text-blue-400",
-    physical: "text-pink-400",
-    game: "text-green-400",
-    boundaries: "text-purple-400",
   };
 
   return (
@@ -83,14 +76,19 @@ export default function App() {
         if (e.key === "Enter" || e.key === " ") handleClick();
       }}
       style={{
-        backgroundColor: "#000",
-        color: "white",
-        minHeight: "100vh",
-        margin: 0,
+        height: "100dvh",
+        minHeight: "100svh",
         display: "flex",
         flexDirection: "column",
-        fontFamily: "'Inter', system-ui, sans-serif",
+        backgroundColor: "#000000",
+        color: "#ffffff",
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+        boxSizing: "border-box",
+        outline: "none",
         overflow: "hidden",
+        margin: 0,
+        padding: 0,
       }}
     >
       <div
@@ -100,88 +98,83 @@ export default function App() {
           position: "sticky",
           top: 0,
           zIndex: 10,
-          borderBottom: "1px solid #333",
+          display: "grid",
+          gridTemplateColumns: `repeat(${levels.length + 1}, auto)`,
+          gap: "0.5rem",
+          alignItems: "center",
+          textAlign: "center",
+          fontWeight: 600,
+          fontSize: "0.875rem",
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(${levels.length + 1}, auto)`,
-            gap: "0.5rem",
-            alignItems: "center",
-            textAlign: "center",
-            fontWeight: "600",
-            fontSize: "0.875rem",
-          }}
-        >
-          <div></div>
-          {levels.map((lvl) => (
+        <div></div>
+        {levels.map((lvl) => (
+          <div
+            key={`header-${lvl}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleEntireLevel(lvl);
+            }}
+            style={{
+              cursor: "pointer",
+              color: "#ccc",
+              padding: "0.25rem 0.5rem",
+            }}
+          >
+            Level {lvl}
+          </div>
+        ))}
+        {categories.map((cat) => (
+          <React.Fragment key={cat}>
             <div
-              key={`header-${lvl}`}
-              style={{
-                cursor: "pointer",
-                color: "#ccc",
-                padding: "0.25rem 0.5rem",
-              }}
               onClick={(e) => {
                 e.stopPropagation();
-                toggleEntireLevel(lvl);
+                toggleEntireCategory(cat);
+              }}
+              style={{
+                fontWeight: "700",
+                textTransform: "capitalize",
+                cursor: "pointer",
+                color: "#fff",
+                paddingRight: "0.5rem",
               }}
             >
-              Level {lvl}
+              {cat}
             </div>
-          ))}
-          {categories.map((cat) => (
-            <React.Fragment key={`cat-header-${cat}`}>
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleEntireCategory(cat);
-                }}
-                style={{
-                  fontWeight: "700",
-                  textTransform: "capitalize",
-                  cursor: "pointer",
-                  color: "#fff",
-                  paddingRight: "0.5rem",
-                }}
-              >
-                {cat}
-              </div>
-              {levels.map((lvl) => {
-                const key = `${cat}:${lvl}`;
-                const active = activeCombos.has(key);
-                const exists = prompts.some((p) => p.category === cat && p.level === lvl);
-                return (
-                  <div key={key} style={{ width: "100%", textAlign: "center" }}>
-                    {exists ? (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleCombo(cat, lvl);
-                        }}
-                        style={{
-                          padding: "0.25rem 0.5rem",
-                          borderRadius: "0.25rem",
-                          border: "1px solid #444",
-                          backgroundColor: active ? "#2563eb" : "#222",
-                          color: active ? "white" : "#aaa",
-                          cursor: "pointer",
-                          fontSize: "0.875rem",
-                          userSelect: "none",
-                        }}
-                      >
-                        {active ? "✓" : "✕"}
-                      </button>
-                    ) : (
-                      <div style={{ height: "2rem" }}></div>
-                    )}
-                  </div>
-                );
-              })}
-            </React.Fragment>
-          ))}
-        </div>
+            {levels.map((lvl) => {
+              const key = `${cat}:${lvl}`;
+              const active = activeCombos.has(key);
+              const exists = prompts.some((p) => p.category === cat && p.level === lvl);
+              return (
+                <div key={key} style={{ width: "100%", textAlign: "center" }}>
+                  {exists ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleCombo(cat, lvl);
+                      }}
+                      style={{
+                        padding: "0.25rem 0.5rem",
+                        borderRadius: "0.25rem",
+                        border: "1px solid #444",
+                        backgroundColor: active ? "#ffffff" : "#000000",
+                        color: active ? "#000000" : "#ffffff",
+                        cursor: "pointer",
+                        fontSize: "0.875rem",
+                        userSelect: "none",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      {active ? "✓" : "✕"}
+                    </button>
+                  ) : (
+                    <div style={{ height: "2rem" }}></div>
+                  )}
+                </div>
+              );
+            })}
+          </React.Fragment>
+        ))}
       </div>
 
       <main
@@ -191,33 +184,35 @@ export default function App() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "1.5rem",
+          padding: "0.5rem",
           textAlign: "center",
-          userSelect: "none",
+          position: "relative",
         }}
       >
         {currentPrompt ? (
           <>
-            <h1 style={{ fontSize: "1.75rem", fontWeight: "600", maxWidth: "40rem", color: "#fff" }}>
+            <h1
+              style={{
+                fontSize: "2rem",
+                fontWeight: "600",
+                color: "#ffffff",
+                maxWidth: "40rem",
+                marginBottom: "0.5rem",
+              }}
+            >
               {currentPrompt.text}
             </h1>
             <p
               style={{
-                marginTop: "1rem",
-                textTransform: "uppercase",
-                fontWeight: "700",
-                letterSpacing: "0.05em",
-                color: categoryColors[currentPrompt.category] || "#aaa",
+                fontSize: "0.75rem",
+                color: "#888888",
               }}
             >
-              {currentPrompt.category} · Level {currentPrompt.level}
-            </p>
-            <p style={{ marginTop: "0.5rem", fontSize: "0.75rem", color: "#666", userSelect: "text" }}>
               (Click anywhere or press Enter/Space to see another prompt)
             </p>
           </>
         ) : (
-          <p style={{ color: "#aaa", marginTop: "1.5rem", userSelect: "text" }}>
+          <p style={{ color: "#bbbbbb", marginTop: "1.5rem" }}>
             No prompts available for the selected filters.
           </p>
         )}
