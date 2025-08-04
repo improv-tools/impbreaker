@@ -1,4 +1,4 @@
-const prompts = [
+export const prompts = [
   // PAUSE / CHECK-IN
   { text: "Take a moment to check in with yourself. How are you feeling?", category: "pause", level: 0 },
   { text: "Would you like to continue, pause, or stop?", category: "pause", level: 0 },
