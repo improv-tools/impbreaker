@@ -32,8 +32,7 @@ export default function App() {
   const toggleCombo = (cat, lvl) => {
     const key = `${cat}:${lvl}`;
     const newSet = new Set(activeCombos);
-    if (newSet.has(key)) newSet.delete(key);
-    else newSet.add(key);
+    newSet.has(key) ? newSet.delete(key) : newSet.add(key);
     setActiveCombos(newSet);
 
     const filtered = prompts.filter((p) => newSet.has(`${p.category}:${p.level}`));
@@ -45,10 +44,10 @@ export default function App() {
     const allOn = categories.every((cat) => newSet.has(`${cat}:${lvl}`));
     categories.forEach((cat) => {
       const key = `${cat}:${lvl}`;
-      if (allOn) newSet.delete(key);
-      else newSet.add(key);
+      allOn ? newSet.delete(key) : newSet.add(key);
     });
     setActiveCombos(newSet);
+
     const filtered = prompts.filter((p) => newSet.has(`${p.category}:${p.level}`));
     setCurrentPrompt(filtered.length > 0 ? filtered[Math.floor(Math.random() * filtered.length)] : null);
   };
@@ -58,10 +57,10 @@ export default function App() {
     const allOn = levels.every((lvl) => newSet.has(`${cat}:${lvl}`));
     levels.forEach((lvl) => {
       const key = `${cat}:${lvl}`;
-      if (allOn) newSet.delete(key);
-      else newSet.add(key);
+      allOn ? newSet.delete(key) : newSet.add(key);
     });
     setActiveCombos(newSet);
+
     const filtered = prompts.filter((p) => newSet.has(`${p.category}:${p.level}`));
     setCurrentPrompt(filtered.length > 0 ? filtered[Math.floor(Math.random() * filtered.length)] : null);
   };
@@ -78,19 +77,40 @@ export default function App() {
       style={{
         height: "100dvh",
         minHeight: "100svh",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#000000",
-        color: "#ffffff",
+        backgroundColor: "#000",
+        color: "#fff",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-        boxSizing: "border-box",
-        outline: "none",
-        overflow: "hidden",
         margin: 0,
         padding: 0,
+        outline: "none",
+        border: "none",
       }}
     >
+      <style>{`
+        html, body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background: #000;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        :focus {
+          outline: none;
+        }
+
+        button:focus {
+          outline: none;
+        }
+      `}</style>
+
       <div
         style={{
           backgroundColor: "#111",
